@@ -12,6 +12,11 @@
 		4D4C64C42A473C9C0028127F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64C32A473C9C0028127F /* ViewController.swift */; };
 		4D4C64C92A473C9D0028127F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C64C82A473C9D0028127F /* Assets.xcassets */; };
 		4D4C64CC2A473C9D0028127F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4C64CA2A473C9D0028127F /* LaunchScreen.storyboard */; };
+		4D4C64D42A474B1F0028127F /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64D32A474B1F0028127F /* SettingModel.swift */; };
+		4D4C64D72A474B790028127F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D4C64D62A474B790028127F /* SnapKit */; };
+		4D4C64DA2A4761FB0028127F /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */; };
+		4D4C64DC2A48C1210028127F /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */; };
+		4D4C64DE2A48F3B60028127F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64DD2A48F3B60028127F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,10 @@
 		4D4C64C82A473C9D0028127F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D4C64CB2A473C9D0028127F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D4C64CD2A473C9D0028127F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D4C64D32A474B1F0028127F /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
+		4D4C64DD2A48F3B60028127F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D4C64D72A474B790028127F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +66,24 @@
 			children = (
 				4D4C64BF2A473C9C0028127F /* AppDelegate.swift */,
 				4D4C64C12A473C9C0028127F /* SceneDelegate.swift */,
-				4D4C64C32A473C9C0028127F /* ViewController.swift */,
+				4D4C64D82A474F940028127F /* SettingModule */,
 				4D4C64C82A473C9D0028127F /* Assets.xcassets */,
 				4D4C64CA2A473C9D0028127F /* LaunchScreen.storyboard */,
 				4D4C64CD2A473C9D0028127F /* Info.plist */,
 			);
 			path = SettingsMenu;
+			sourceTree = "<group>";
+		};
+		4D4C64D82A474F940028127F /* SettingModule */ = {
+			isa = PBXGroup;
+			children = (
+				4D4C64D32A474B1F0028127F /* SettingModel.swift */,
+				4D4C64C32A473C9C0028127F /* ViewController.swift */,
+				4D4C64DD2A48F3B60028127F /* DetailViewController.swift */,
+				4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */,
+				4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */,
+			);
+			path = SettingModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +102,9 @@
 			dependencies = (
 			);
 			name = SettingsMenu;
+			packageProductDependencies = (
+				4D4C64D62A474B790028127F /* SnapKit */,
+			);
 			productName = SettingsMenu;
 			productReference = 4D4C64BC2A473C9C0028127F /* SettingsMenu.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 4D4C64B32A473C9C0028127F;
+			packageReferences = (
+				4D4C64D52A474B790028127F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4D4C64BD2A473C9C0028127F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,9 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D4C64D42A474B1F0028127F /* SettingModel.swift in Sources */,
+				4D4C64DC2A48C1210028127F /* BadgeTableViewCell.swift in Sources */,
 				4D4C64C42A473C9C0028127F /* ViewController.swift in Sources */,
 				4D4C64C02A473C9C0028127F /* AppDelegate.swift in Sources */,
+				4D4C64DA2A4761FB0028127F /* SwitchTableViewCell.swift in Sources */,
 				4D4C64C22A473C9C0028127F /* SceneDelegate.swift in Sources */,
+				4D4C64DE2A48F3B60028127F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4D4C64D52A474B790028127F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4D4C64D62A474B790028127F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D4C64D52A474B790028127F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4D4C64B42A473C9C0028127F /* Project object */;
 }
