@@ -13,6 +13,7 @@ class SwitchTableViewCell: UITableViewCell {
         didSet {
             label.text = settingModel?.label
             iconImageView.image = settingModel?.icon
+            iconImageView.backgroundColor = settingModel?.iconBackgroundColor
         }
     }
 
@@ -20,6 +21,11 @@ class SwitchTableViewCell: UITableViewCell {
 
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
+        imageView.tintColor = .white
+        imageView.contentMode = .center
         return imageView
     }()
 
@@ -45,6 +51,12 @@ class SwitchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        label.text = nil
+    }
+
     // MARK: - Setup Views
 
     private func setupViews() {
@@ -59,7 +71,7 @@ class SwitchTableViewCell: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(18)
-            make.size.equalTo(24)
+            make.size.equalTo(30)
         }
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

@@ -16,6 +16,7 @@
 		4D4C64D72A474B790028127F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D4C64D62A474B790028127F /* SnapKit */; };
 		4D4C64DA2A4761FB0028127F /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */; };
 		4D4C64DC2A48C1210028127F /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */; };
+		4D4C64DE2A48F3B60028127F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C64DD2A48F3B60028127F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4D4C64D32A474B1F0028127F /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
+		4D4C64DD2A48F3B60028127F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				4D4C64D32A474B1F0028127F /* SettingModel.swift */,
 				4D4C64C32A473C9C0028127F /* ViewController.swift */,
+				4D4C64DD2A48F3B60028127F /* DetailViewController.swift */,
 				4D4C64D92A4761FB0028127F /* SwitchTableViewCell.swift */,
 				4D4C64DB2A48C1210028127F /* BadgeTableViewCell.swift */,
 			);
@@ -165,6 +168,7 @@
 				4D4C64C02A473C9C0028127F /* AppDelegate.swift in Sources */,
 				4D4C64DA2A4761FB0028127F /* SwitchTableViewCell.swift in Sources */,
 				4D4C64C22A473C9C0028127F /* SceneDelegate.swift in Sources */,
+				4D4C64DE2A48F3B60028127F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

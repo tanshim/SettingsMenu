@@ -11,6 +11,7 @@ import SnapKit
 class ViewController: UIViewController {
 
     private var settings: [[Setting]]?
+    let spacing: CGFloat = 60.0
 
     // MARK: - UI
 
@@ -40,7 +41,6 @@ class ViewController: UIViewController {
     func setupViews() {
         view.backgroundColor = .white
         title = "Настройки"
-        navigationController?.navigationBar.tintColor = .white
         view.addSubview(settingsTableView)
     }
 
@@ -49,7 +49,6 @@ class ViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -63,7 +62,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cellModel = settings?[indexPath.section][indexPath.row]
         switch cellModel?.type {
         case .base:
@@ -71,7 +69,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = cellModel?.label
             cell.imageView?.image = cellModel?.icon
-            cell.selectionStyle = .none
+            cell.imageView?.backgroundColor = cellModel?.iconBackgroundColor
+            cell.imageView?.tintColor = .white
+            cell.imageView?.layer.cornerRadius = 4
+            cell.imageView?.layer.masksToBounds = true
+            cell.imageView?.contentMode = .center
             return cell
         case .withDetail:
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "withDetail")
@@ -79,22 +81,35 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.text = cellModel?.label
             cell.detailTextLabel?.text = cellModel?.detailText
             cell.imageView?.image = cellModel?.icon
-            cell.selectionStyle = .none
+            cell.imageView?.tintColor = .white
+            cell.imageView?.backgroundColor = cellModel?.iconBackgroundColor
+            cell.imageView?.layer.cornerRadius = 4
+            cell.imageView?.layer.masksToBounds = true
+            cell.imageView?.contentMode = .center
             return cell
         case .withSwitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "withSwitch", for: indexPath) as? SwitchTableViewCell
             cell?.settingModel = cellModel
-            cell?.selectionStyle = .none
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
             return cell ?? UITableViewCell()
         case .withBadge:
             let cell = tableView.dequeueReusableCell(withIdentifier: "withBadge", for: indexPath) as? BadgeTableViewCell
             cell?.accessoryType = .disclosureIndicator
             cell?.settingModel = cellModel
-            cell?.selectionStyle = .none
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
             return cell ?? UITableViewCell()
         case .none:
             return UITableViewCell()
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cellModel = settings?[indexPath.section][indexPath.row]
+        print("Нажата ячейка \(cellModel?.label ?? "")")
+        let viewController = DetailViewController()
+        viewController.settingModel = cellModel
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
