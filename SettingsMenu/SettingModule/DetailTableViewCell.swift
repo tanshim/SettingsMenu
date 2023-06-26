@@ -1,17 +1,19 @@
 //
-//  BaseTableViewCell.swift
+//  DetailTableViewCell.swift
 //  SettingsMenu
 //
-//  Created by Sultan on 24.06.2023.
+//  Created by Sultan on 26.06.2023.
 //
 
 import UIKit
+import SnapKit
 
-class SwitchTableViewCell: UITableViewCell {
+class DetailTableViewCell: UITableViewCell {
 
     var settingModel: Setting? {
         didSet {
             label.text = settingModel?.label
+            detailLabel.text = settingModel?.detailText
             iconImageView.image = settingModel?.icon
             iconImageView.backgroundColor = settingModel?.iconBackgroundColor
         }
@@ -25,7 +27,7 @@ class SwitchTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
         imageView.tintColor = .white
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -34,9 +36,10 @@ class SwitchTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var uiSwitch: UISwitch = {
-        let uiSwitch = UISwitch(frame: .zero)
-        return uiSwitch
+    private lazy var detailLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        return label
     }()
 
     // MARK: - Lifecycle
@@ -55,6 +58,7 @@ class SwitchTableViewCell: UITableViewCell {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
+        detailLabel.text = nil
     }
 
     // MARK: - Setup Views
@@ -62,7 +66,7 @@ class SwitchTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(label)
-        contentView.addSubview(uiSwitch)
+        contentView.addSubview(detailLabel)
     }
 
     // MARK: - Setup Constraints
@@ -78,9 +82,10 @@ class SwitchTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalTo(iconImageView.snp.trailing).offset(16)
         }
-        uiSwitch.snp.makeConstraints { make in
+        detailLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-10)
+
         }
     }
 

@@ -30,11 +30,11 @@ extension Setting {
             Setting(label: "Wi-FI", type: .withDetail,
                  icon: UIImage(systemName: "wifi"), detailText: "Не подключено", iconBackgroundColor: .systemBlue),
             Setting(label: "Bluetooth", type: .withDetail,
-                 icon: UIImage(systemName: "shareplay"), detailText: "Вкл.", iconBackgroundColor: .systemBlue),
+                 icon: UIImage(named: "bluetooth"), detailText: "Вкл.", iconBackgroundColor: .systemBlue),
             Setting(label: "Cотовая связь", type: .base,
                  icon: UIImage(systemName: "antenna.radiowaves.left.and.right"), iconBackgroundColor: .systemGreen),
             Setting(label: "Режим модема", type: .base, icon: UIImage(systemName: "personalhotspot"), iconBackgroundColor: .systemGreen),
-            Setting(label: "VPN", type: .withSwitch, icon: UIImage(systemName: "cellularbars"), iconBackgroundColor: .systemBlue)
+            Setting(label: "VPN", type: .withSwitch, icon: UIImage(named: "vpn"), iconBackgroundColor: .white)
         ],
         [
             Setting(label: "Уведомления", type: .base, icon: UIImage(systemName: "bell.fill"), iconBackgroundColor: .systemRed),

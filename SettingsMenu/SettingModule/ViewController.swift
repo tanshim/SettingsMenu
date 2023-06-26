@@ -17,8 +17,8 @@ class ViewController: UIViewController {
 
     private lazy var settingsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "baseCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "withDetail")
+        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: "baseCell")
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "withDetail")
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: "withSwitch")
         tableView.register(BadgeTableViewCell.self, forCellReuseIdentifier: "withBadge")
         tableView.dataSource = self
@@ -65,28 +65,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cellModel = settings?[indexPath.section][indexPath.row]
         switch cellModel?.type {
         case .base:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "baseCell", for: indexPath)
-            cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.text = cellModel?.label
-            cell.imageView?.image = cellModel?.icon
-            cell.imageView?.backgroundColor = cellModel?.iconBackgroundColor
-            cell.imageView?.tintColor = .white
-            cell.imageView?.layer.cornerRadius = 4
-            cell.imageView?.layer.masksToBounds = true
-            cell.imageView?.contentMode = .center
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "baseCell", for: indexPath) as? BaseTableViewCell
+            cell?.accessoryType = .disclosureIndicator
+            cell?.settingModel = cellModel
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
+            return cell ?? UITableViewCell()
         case .withDetail:
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "withDetail")
-            cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.text = cellModel?.label
-            cell.detailTextLabel?.text = cellModel?.detailText
-            cell.imageView?.image = cellModel?.icon
-            cell.imageView?.tintColor = .white
-            cell.imageView?.backgroundColor = cellModel?.iconBackgroundColor
-            cell.imageView?.layer.cornerRadius = 4
-            cell.imageView?.layer.masksToBounds = true
-            cell.imageView?.contentMode = .center
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "withDetail", for: indexPath) as? DetailTableViewCell
+            cell?.accessoryType = .disclosureIndicator
+            cell?.settingModel = cellModel
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
+            return cell ?? UITableViewCell()
         case .withSwitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "withSwitch", for: indexPath) as? SwitchTableViewCell
             cell?.settingModel = cellModel

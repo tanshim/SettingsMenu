@@ -21,17 +21,17 @@ class BadgeTableViewCell: UITableViewCell {
 
     // MARK: - UI
 
-    lazy var iconImageView: UIImageView = {
+    private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
         imageView.tintColor = .white
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    lazy var label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         return label
     }()
@@ -80,7 +80,8 @@ class BadgeTableViewCell: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(18)
-            make.size.equalTo(30)
+            make.height.equalTo(33)
+            make.width.equalTo(30)
         }
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

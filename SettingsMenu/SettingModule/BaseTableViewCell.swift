@@ -2,12 +2,13 @@
 //  BaseTableViewCell.swift
 //  SettingsMenu
 //
-//  Created by Sultan on 24.06.2023.
+//  Created by Sultan on 26.06.2023.
 //
 
 import UIKit
+import SnapKit
 
-class SwitchTableViewCell: UITableViewCell {
+class BaseTableViewCell: UITableViewCell {
 
     var settingModel: Setting? {
         didSet {
@@ -34,11 +35,6 @@ class SwitchTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var uiSwitch: UISwitch = {
-        let uiSwitch = UISwitch(frame: .zero)
-        return uiSwitch
-    }()
-
     // MARK: - Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -62,7 +58,6 @@ class SwitchTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(label)
-        contentView.addSubview(uiSwitch)
     }
 
     // MARK: - Setup Constraints
@@ -77,10 +72,6 @@ class SwitchTableViewCell: UITableViewCell {
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalTo(iconImageView.snp.trailing).offset(16)
-        }
-        uiSwitch.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
         }
     }
 
